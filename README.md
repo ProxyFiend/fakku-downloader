@@ -1,16 +1,20 @@
-# fakku-downloader
+# Fakku Downloader
+Ever wanted to save Fakku Unlimited manga to read offline? This is the solution for you. This script does not allow piracy, you must still pay for your subscription, but saves the manga to your hard drive for reading offline or on a device that doesn't support Fakku. (@apple)
 
-Fakku-downloader - this is python script that allows download manga directly from fakku.net.
+### Usage
+1) Download or clone this repo
+2) Download the correct [Driver](https://selenium-python.readthedocs.io/installation.html#drivers) for your browser and put it in the root folder.
+3) Rename the driver to "chromedriver.exe" (This is a temporary fix)
+4) Install all python requirements by running **install.bat** or run <code>pip install -r requirements.txt</code>
+5) Add all the URLs of each manga to urls.txt
+6) Run download.bat or <code>py main.py</code>
 
-### The problem
+### FAQ
+#### Why not a browser extension?
+That was the original plan. However it proved to be a monumental task. It turns out that each manga is stored as a scrambled image, and the Fakku reader unscrambles it then displays it on a canvas. If you were to download the image, it would be useless for reading. Unscrambling the image is near impossible thanks to how heavily the Fakku reader code is obfuscated. Finally the canvas it's rendered on doesn't allow javascript interaction for security reasons. This means outside of reverse engineering the Fakku reader, currently there is no way to download manga through a browser extension.
 
-*Fakku.net manga reader has a good protect from download.*
-
-As far as I know, Manga reader first decodes the encrypted image and then displays it on the html canvas. This is done so tricky that I could not find a way to automate the downloading of canvas because the JS functions for this are blocked in the domain. Therefore, in order to download manga, you need to do some non-trivial actions manually. And this will have to be done separately for each page.
-
-### The easiest solution
-
-In my opinion, the simplest and fastest solution for downloading manga from fakku.net is to simply open it in a browser and save a screenshot of each page. Fakku-downloader automates this process in background using headless browser.
+#### Why Python?
+The original version of this script was already in Python. This fork is heavily modified, but it was better to stick with the same language than having to rewrite everything from scratch. Python also runs on all platforms, which is a helpful bonus.
 
 ## How to launch
 1) Download or clone this repository
@@ -27,7 +31,7 @@ In my opinion, the simplest and fastest solution for downloading manga from fakk
 * More option technical you can find via --help
 
 ---
-
+This section needs to be cleaned up.
 ## Working example
 
 1. After downloading the repository, chromedriver and creating urls.txt file, root folder will be like this:
